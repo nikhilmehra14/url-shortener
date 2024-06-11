@@ -43,8 +43,14 @@ async function getRedirect(req, res) {
   return res.redirect(entry.redirectURL);
 }
 
+async function getTest(req, res) {
+  const allUrls = await URL.find({});
+  return res.render("home", { urls: allUrls });
+}
+
 module.exports = {
   generateNewShortURL,
   getAnalytics,
   getRedirect,
+  getTest,
 };
