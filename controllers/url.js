@@ -13,7 +13,8 @@ async function generateNewShortURL(req, res) {
     visitHistory: [],
   });
 
-  return res.status(201).json({ id: shortID });
+  return res.render("home", { id: shortID });
+  // return res.status(201).json({ id: shortID });
 }
 
 async function getAnalytics(req, res) {
@@ -43,14 +44,8 @@ async function getRedirect(req, res) {
   return res.redirect(entry.redirectURL);
 }
 
-async function getTest(req, res) {
-  const allUrls = await URL.find({});
-  return res.render("home", { urls: allUrls });
-}
-
 module.exports = {
   generateNewShortURL,
   getAnalytics,
   getRedirect,
-  getTest,
 };
